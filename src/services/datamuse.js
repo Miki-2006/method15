@@ -42,3 +42,18 @@ export const getStartWithFromDatamuse = async (word, setStartsWith) => {
         console.log("Ошибка Datamuse", err);
     }
 }
+
+export const getConfusingWords = async (word) => {
+  try {
+        const res = await fetch(`https://api.datamuse.com/words?ml=${word}&max=3`)
+        const data = await res.json();
+
+        if (res.ok && data[0]) {
+            return data.map((item) => ({ word: item.word }))
+        } else {
+            console.log("Ошибка при поиске слов");
+        }
+    } catch (err) {
+        console.log("Ошибка Datamuse", err);
+    }
+};

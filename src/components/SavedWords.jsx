@@ -28,17 +28,29 @@ const SavedWords = ({ userNickName }) => {
 
   return (
     <div className="space-y-4">
-      {words?.map((word) => (
-        <div
-          key={word.id}
-          className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow"
+      <div className="mb-4 space-y-4">
+        { words && words.map((word) => (
+          <div
+            key={word.id}
+            className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 shadow"
+          >
+            <h2 className="text-lg font-semibold dark:text-white">
+              {word.word}
+            </h2>
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              {word.definition}
+            </p>
+          </div>
+        ))}
+      </div>
+      {words && (
+        <a
+          href="/test"
+          className=" px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md shadow"
         >
-          <h2 className="text-lg font-semibold dark:text-white">{word.word}</h2>
-          <p className="text-sm text-gray-600 dark:text-gray-400">
-            {word.definition}
-          </p>
-        </div>
-      ))}
+          Learn
+        </a>
+      )}
     </div>
   );
 };

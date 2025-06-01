@@ -1,4 +1,4 @@
-export const getDefinitionFromDictionaryApi = async (word, setDefinition) => {
+export const getDefinitionFromDictionaryApi = async (word, setDefinition, setError) => {
     try {
       const res = await fetch(
         `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
@@ -10,6 +10,7 @@ export const getDefinitionFromDictionaryApi = async (word, setDefinition) => {
         
       } else {
         console.log("Ошибка при поиске слова");
+        setError(true)
       }
     } catch (err) {
       console.log("Ошибка DictionaryApi", err);

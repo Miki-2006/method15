@@ -5,22 +5,22 @@ import NoUser from "../components/NoUser";
 import { IoIosLogOut } from "react-icons/io";
 
 const Profile = () => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (localStorage.getItem("user")) {
       setUser(JSON.parse(localStorage.getItem("user")));
-    } 
+    }
   }, []);
 
   if (!user) {
-    return <NoUser/>
+    return <NoUser />;
   }
 
   const LogOut = () => {
     localStorage.removeItem("user");
     window.location.reload();
-  }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950 mb-20">
@@ -30,12 +30,16 @@ const Profile = () => {
           <h1 className="text-2xl font-bold dark:text-gray-200">
             {user?.nickName}
           </h1>
-          <IoIosLogOut className="text-3xl text-gray-700 dark:text-gray-300 ml-32" onClick={LogOut}/>
+          <IoIosLogOut
+            className="text-3xl text-gray-700 dark:text-gray-300 ml-32"
+            onClick={LogOut}
+          />
         </div>
-        <SavedWords userNickName={user?.nickName}/>
+        <SavedWords userNickName={user?.nickName} />
+        
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

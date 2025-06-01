@@ -2,58 +2,44 @@ import { useEffect, useState } from "react";
 import WordTranslateForm from "../components/WordTranslateForm";
 import LoadingOverlay from "../components/LoadingOverlay";
 import { getDefinitionFromDictionaryApi } from "../services/dictionary";
-import {
-  getSoundsLikeFromDatamuse,
-  getStartWithFromDatamuse,
-  getSynonymsFromDatamuse,
-} from "../services/datamuse";
 import WordsList from "../components/WordsList";
 import { addDoc, collection, doc } from "firebase/firestore";
 import { db } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
+import Unsplash from "../components/Unsplash/Unsplash";
 
 const Main = () => {
   const [word, setWord] = useState(null);
   const [definition, setDefinition] = useState(null);
-  const [synonyms, setSynonyms] = useState(null);
-  const [soundsLike, setSoundsLike] = useState(null);
-  const [startsWith, setStartsWith] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
   const fetchDefinition = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await getDefinitionFromDictionaryApi(word, setDefinition);
-    await getSynonymsFromDatamuse(word, setSynonyms);
-    await getSoundsLikeFromDatamuse(word, setSoundsLike);
-    await getStartWithFromDatamuse(word, setStartsWith);
+    await getDefinitionFromDictionaryApi(word, setDefinition, setError);
+    if (!error) {
+      setLoading(false)
+    }
   };
 
+
   useEffect(() => {
-    if (synonyms && soundsLike && startsWith) {
+    if (definition) {
       setLoading(false);
     }
-  }, [soundsLike, synonyms, startsWith]);
+  }, [definition]);
 
   const handleSave = async () => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
+    setLoading(true);
+    const userId = JSON.parse(localStorage.getItem("user"))?.id;
     const formData = new FormData();
     formData.append("word", word);
     formData.append("definition", definition);
-    formData.append(
-      "synonyms",
-      synonyms.map((item) => item.word)
-    );
-    formData.append(
-      "startWith",
-      startsWith.map((item) => item.word)
-    );
-    formData.append(
-      "soundsLike",
-      soundsLike.map((item) => item.word)
-    );
+    formData.append("imageURL", image);
 
     const wordData = Object.fromEntries(formData.entries());
 
@@ -65,15 +51,19 @@ const Main = () => {
       const userRef = doc(db, "users", userId);
       const wordsCollectionRef = collection(userRef, "words");
 
-
       await addDoc(wordsCollectionRef, wordData);
-      console.log(wordData);
-
       setSuccess(true);
       setTimeout(() => setSuccess(false), 1500);
+      setLoading(false);
     } catch (err) {
       console.error("Error saving word:", err);
+      setLoading(false);
     }
+  };
+
+  const handleDefinitionChange = (newDefinition) => {
+    setDefinition(newDefinition);
+    // можешь также здесь вызывать сохранение в базу / localStorage и т.д.
   };
 
   return (
@@ -86,6 +76,19 @@ const Main = () => {
           setWord={setWord}
         />
 
+        {error ? <b className="text-sm font-medium text-red-700 dark:text-red-300">We couldn't fine word!</b> : ''}
+
+        <WordsList
+          definition={definition}
+          onDefinitionChange={handleDefinitionChange}
+        />
+
+        {definition ? (
+          <Unsplash query={word} onSelect={(url) => setImage(url)} />
+        ) : (
+          ""
+        )}
+
         {definition && (
           <button
             onClick={handleSave}
@@ -94,13 +97,6 @@ const Main = () => {
             Learn
           </button>
         )}
-
-        <WordsList
-          synonyms={synonyms}
-          soundsLike={soundsLike}
-          startsWith={startsWith}
-          definition={definition}
-        />
       </div>
     </>
   );

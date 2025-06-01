@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCaJVmA71XAjQaCjqRcmbD2LNkzPFlgcbo",
-  authDomain: "method15.firebaseapp.com",
-  projectId: "method15",
-  storageBucket: "method15.firebasestorage.app",
-  messagingSenderId: "887398606535",
-  appId: "1:887398606535:web:7c21fc1eb000ec4b9340e2",
-  measurementId: "G-VQX7WQBFTC"
+  apiKey: "AIzaSyATOhaziKMx89c0Jq26ZOl3-0mmzCJe25g",
+  authDomain: "tilingo-c59b2.firebaseapp.com",
+  projectId: "tilingo-c59b2",
+  storageBucket: "tilingo-c59b2.firebasestorage.app",
+  messagingSenderId: "709419501334",
+  appId: "1:709419501334:web:ec1eb45fa7e5a0b6fef237",
+  measurementId: "G-4CD531J1ES"
 };
 
 const app = initializeApp(firebaseConfig);
