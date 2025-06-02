@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { db } from "../../services/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
-import styles from "./test.module.css";
 import { getConfusingWords } from "../../services/datamuse";
 import TestCard from "../../components/TestCard/TestCard";
 import { useNavigate } from "react-router-dom";
