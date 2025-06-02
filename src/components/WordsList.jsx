@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaPencil } from "react-icons/fa6";
 
 const WordsList = ({ definition, onDefinitionChange }) => {
   const [editing, setEditing] = useState(false);
@@ -32,7 +33,7 @@ const WordsList = ({ definition, onDefinitionChange }) => {
               onClick={() => setEditing(true)}
               title="Click to edit"
             >
-              <span className="font-bold">Definition:</span> {definition}
+              <span className="font-bold">Definition:</span> {definition}<FaPencil className="text-xl text-gray-700 dark:text-gray-300 ml-auto"/>
             </p>
           ) : (
             <textarea
