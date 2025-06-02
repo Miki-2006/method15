@@ -13,7 +13,7 @@ export default function Unsplash({ query, onSelect }) {
         const res = await axios.get("https://api.unsplash.com/search/photos", {
         params: { query },
         headers: {
-          Authorization: `Client-ID nI4OQ4TGOkGf5D5cEVQEksV-3Z1RG57hhR3AnnrkqxM`,
+          Authorization: `Client-ID ${process.env.REACT_APP_UNSPLASH_API_KEY}`,
         },
       });
 

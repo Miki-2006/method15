@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyATOhaziKMx89c0Jq26ZOl3-0mmzCJe25g",
-  authDomain: "tilingo-c59b2.firebaseapp.com",
-  projectId: "tilingo-c59b2",
-  storageBucket: "tilingo-c59b2.firebasestorage.app",
-  messagingSenderId: "709419501334",
-  appId: "1:709419501334:web:ec1eb45fa7e5a0b6fef237",
-  measurementId: "G-4CD531J1ES"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
