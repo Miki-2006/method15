@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "./results.module.css";
+// import styles from "./results.module.css";
 
 const Results = ({ correctCount, incorrectCount, handleRestart }) => {
   const navigate = useNavigate();

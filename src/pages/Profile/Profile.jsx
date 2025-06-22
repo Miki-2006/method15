@@ -3,7 +3,6 @@ import { FaUserCircle } from "react-icons/fa";
 import SavedWords from "../../components/SavedWords/SavedWords";
 import NoUser from "../../components/Auth/NoUser/NoUser";
 import { IoIosLogOut } from "react-icons/io";
-import supabase from "../../services/supabase";
 import styles from './profile.module.css'
 
 const Profile = () => {

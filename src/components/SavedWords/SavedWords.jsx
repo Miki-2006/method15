@@ -27,7 +27,7 @@ const SavedWords = ({ user }) => {
       }
     };
     fetchModulesOfUser();
-  }, []);
+  }, [user]);
 
   const createModule = async () => {
     // try {

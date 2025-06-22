@@ -58,7 +58,7 @@ const Definition = () => {
       }
     };
     fetchModulesOfUser();
-  }, []);
+  }, [error, navigate]);
 
   const handleSave = async () => {
     setLoading(true);
