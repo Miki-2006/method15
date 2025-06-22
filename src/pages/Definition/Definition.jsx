@@ -77,7 +77,7 @@ const Definition = () => {
       // if (error) {
       //   console.error(error);
       // }
-      setModulesOfUser(res.modules);
+      // setModulesOfUser(res.modules);
       console.log(image);
       
       setSuccess(true);
