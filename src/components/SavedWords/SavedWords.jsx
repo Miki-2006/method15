@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { fetchWords } from "../../services/fetchWords";
 import styles from "./savedwords.module.css";
 import supabase from "../../services/supabase";
 import { CiSquarePlus } from "react-icons/ci";
@@ -7,7 +6,6 @@ import { CiSquarePlus } from "react-icons/ci";
 const SavedWords = ({ user }) => {
   const [words, setWords] = useState(null);
   const [modulesOfUser, setModulesOfUser] = useState(null);
-  const [newModule, setNewModule] = useState("B2");
 
   useEffect(() => {
     const fetchModulesOfUser = async () => {
@@ -18,6 +16,7 @@ const SavedWords = ({ user }) => {
           .eq("user_id", user.id);
         if (modules) {
           setModulesOfUser(modules);
+          setWords()
         }
         if (error) {
           console.error(error);

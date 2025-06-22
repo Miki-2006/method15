@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import LoadingOverlay from "../../../components/Loaders/LoadingOverlay";
 import supabase from "../../../services/supabase";
 import EmailInput from "../../../components/Auth/Email/EmailInput";
-import GoogleButton from "../../../components/Auth/Google/GoogleButton";
 import styles from "./signup.module.css";
 
 const SignUp = () => {

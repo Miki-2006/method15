@@ -4,7 +4,6 @@ import PasswordInput from "../../../components/Auth/Password/PasswordInput";
 import CheckBox from "../../../components/Auth/CheckBox/CheckBox";
 import LoadingOverlay from "../../../components/Loaders/LoadingOverlay";
 import { useNavigate } from "react-router-dom";
-import GoogleButton from "../../../components/Auth/Google/GoogleButton";
 import styles from "./signin.module.css";
 import supabase from "../../../services/supabase";
 

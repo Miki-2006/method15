@@ -70,16 +70,18 @@ const Definition = () => {
       setSelectedModuleError(true);
     }
     try {
-      const { data, error } = await supabase.from("words").insert();
-      if (data) {
-        const res = [data];
-        setModulesOfUser(res.modules);
-        setSuccess(true);
-        setTimeout(() => setSuccess(false), 1500);
-      }
-      if (error) {
-        console.error(error);
-      }
+      // const { data, error } = await supabase.from("words").insert();
+      // if (data) {
+      //   const res = [data];
+      // }
+      // if (error) {
+      //   console.error(error);
+      // }
+      setModulesOfUser(res.modules);
+      console.log(image);
+      
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 1500);
       setLoading(false);
     } catch (err) {
       console.error("Error saving word:", err);
@@ -91,9 +93,6 @@ const Definition = () => {
     setDefinition(newDefinition);
   };
 
-  const handleSelectModule = (moduleId) => {
-    setSelectedModule(moduleId);
-  };
   return (
     <div className={styles.container}>
       <LoadingOverlay success={success} loading={loading} />
