@@ -1,0 +1,12 @@
+.container{
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.block{
+    padding: clamp(1rem, 1vw, 2rem) clamp(1rem, 1vw, 2rem);
+    background-color: #5B7BFE;
+    border-radius: 10px;
+    box-shadow: #7f94e4 0px 1px 1px 0px inset, #7f94e4 0px 50px 100px -20px, #7f94e4 0px 30px 60px -30px;
+}

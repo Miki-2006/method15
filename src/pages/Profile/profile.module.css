@@ -1,0 +1,59 @@
+
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: clamp(0.5rem, 1vw, 1.5rem) clamp(1rem, 1vw, 2rem);
+  max-width: 60vw;
+  width: 100%;
+  background-color: #141a29;
+  border: 1px solid #202534;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.userIcon {
+  color: #fff;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+}
+
+.nick {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.logoutIcon {
+  position: absolute;
+  right: 0;
+  font-size: 1.75rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Add light/dark variables in global styles if needed */
+@media (max-width: 580px) {
+  .card{
+    max-width: 80vw;
+  }
+}
+@media (max-width: 400px) {
+  .card{
+    max-width: 90vw;
+  }
+}

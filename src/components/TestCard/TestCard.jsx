@@ -6,10 +6,24 @@ const TestCard = ({
   onSelect,
   selectedAnswer,
   showAnswer,
+  testMethod,
+  length,
+  selectedWord
 }) => {
   return (
     <div className={styles.card}>
-      <h2 className="text-sm text-gray-600 dark:text-gray-400 font-bold text-xl">{wordData.definition}</h2>
+      {testMethod === "definition" ? (
+        <h3 className={styles.title}>
+          {wordData.definition}
+        </h3>
+      ) : (
+        ""
+      )}
+      {testMethod === "image" ? (
+        <div className={styles.imgblock}><img src={wordData.image} alt={wordData.word} className={styles.img} /></div>
+      ) : (
+        ""
+      )}
       <div className={styles.options}>
         {confusingWords.map((option) => {
           let optionClass = styles.option;
@@ -34,6 +48,7 @@ const TestCard = ({
           );
         })}
       </div>
+      <span className={styles.length}>{selectedWord + 1} / {length}</span>
     </div>
   );
 };

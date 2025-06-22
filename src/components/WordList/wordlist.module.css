@@ -1,0 +1,41 @@
+.container {
+  margin-top: 1rem; /* mt-4 */
+  padding: 1rem; /* p-4 */
+  border-radius: 10px; /* rounded */
+  background-color: #1B2336;
+  width: 100%;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.text {
+  cursor: pointer;
+  white-space: pre-line;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.textDark {
+  color: var(--textWhite);
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.pencilIcon {
+  margin-left: auto;
+  font-size: 1.25rem; /* text-xl */
+  color: var(--iconColor);
+}
+
+.textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.25rem;
+  background-color: var(--textareaBg);
+  color: var(--textWhite);
+  resize: vertical;
+}

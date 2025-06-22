@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  height: 1rem; /* h-4 */
+  width: 1rem; /* w-4 */
+  border-radius: 0.25rem;
+  border: 1px solid #d1d5db; /* border-gray-300 */
+  color: #4f46e5; /* text-indigo-600 */
+  outline: none;
+}
+
+.checkbox:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* ring-indigo-500 */
+}
+
+.label {
+  margin-left: 0.5rem;
+  font-size: 1.1rem; /* text-sm */
+  color: #374151; /* text-gray-700 */
+}
+
+/* Dark mode */
+.dark .label {
+  color: #d1d5db; /* text-gray-300 */
+}

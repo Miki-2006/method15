@@ -1,0 +1,46 @@
+.form {
+  margin-top: 1rem;
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b2336;
+  border-radius: 10px;
+  padding-right: 0.7rem;
+}
+.input {
+  width: 100%;
+  /* height: 3rem; */
+  background-color: #1b2336;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+}
+.input:focus {
+  outline: none;
+}
+.icon {
+  color: #a4a7af;
+  width: 2rem;
+  height: 2rem;
+}
+.btn{
+    background: #1b2336;
+    border: none;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .form {
+    width: 80vw;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .form {
+    width: 90vw;
+  }
+}

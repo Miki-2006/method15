@@ -1,0 +1,7 @@
+.footer{
+    background-color: #410FA3;
+    width: 100%;
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 5vw, 5rem);
+    display: flex;
+    justify-content: flex-end;
+}

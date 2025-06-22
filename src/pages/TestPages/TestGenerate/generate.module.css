@@ -1,0 +1,33 @@
+.container{
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+.methods{
+    display: flex;
+    gap: clamp(1rem, 1vw, 2rem);
+    margin-top: 2rem;
+}
+.title{
+    font-size: 2rem;
+}
+.definition{
+    padding: clamp(3rem, 3vw, 5rem);
+    background-color: #141A29;
+    border: 1px solid #202534;
+    border-radius: 20px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #fff;
+}
+.image{
+    padding: clamp(3rem, 3vw, 5rem);
+    background-color: #5B7BFE;
+    border-radius: 20px;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #fff;
+}

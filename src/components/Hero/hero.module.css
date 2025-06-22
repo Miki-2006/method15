@@ -1,0 +1,45 @@
+.hero{
+    height: 75vh;
+    padding: clamp(0.5rem, 1vw, 1rem) clamp(1rem, 5vw, 5rem);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.text{
+    color: white;
+    font-size: 1rem;
+}
+.text h2{
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+}
+.text p{
+    font-size: 1.2rem;
+}
+.word{
+    display: flex;
+    flex-direction: column;
+}
+.animation{
+    margin: 0;
+}
+.lottie{
+    /* width: 40vw;
+    height: 40vh; */
+    object-fit: cover;
+}
+
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero {
+    height: 50vh;
+  }
+}

@@ -1,12 +1,21 @@
 import { useState, useEffect } from "react";
-import { db } from "../../services/firebase";
-import { getDocs, collection, query, where } from "firebase/firestore";
 import { getConfusingWords } from "../../services/datamuse";
 import TestCard from "../../components/TestCard/TestCard";
-import { useNavigate } from "react-router-dom";
+import Results from "./Results/Results";
+import styles from "./test.module.css";
+import { useParams } from "react-router-dom";
+import { categories } from "../../assets/words/categories";
+import { b1Words } from "../../assets/words/b1";
+import { b2Words } from "../../assets/words/b2";
+import { c1Words } from "../../assets/words/c1";
+import { c2Words } from "../../assets/words/c2";
+import { emotionsAndFeelings } from "../../assets/words/emotionAndFeeling";
+import { idiomsAndExpressions } from "../../assets/words/idiomsAndExpressions";
+import { slightlyChallengingWords } from "../../assets/words/daily";
+import { ieltsWords } from "../../assets/words/ielts";
+import { toeflWords } from "../../assets/words/toefl";
 
 const Test = () => {
-  const [user, setUser] = useState(null);
   const [words, setWords] = useState(null);
   const [confusingWords, setConfusingWords] = useState([]);
   const [selectedWord, setSelectedWord] = useState(0);
@@ -15,43 +24,56 @@ const Test = () => {
   const [finished, setFinished] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showAnswer, setShowAnswer] = useState(false);
-  const navigate = useNavigate();
+  const params = useParams();
+  const [category, setCategory] = useState(null);
+  const [testMethod, setTestMethod] = useState(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch (err) {
-        console.error("Ошибка парсинга user из localStorage", err);
-      }
-    } else {
-      console.warn("Пользователь не найден в localStorage");
+    switch (params.method) {
+      case "def":
+        setTestMethod("definition")
+        break;
+      case "img":
+        setTestMethod("image")
+        break;
+      default:
+        break;
     }
-  }, []);
+    const [data] = categories.filter((el) => el.id === params.id);
+    setCategory(data);
+    switch (params.id) {
+      case "B1T00":
+        setWords(b1Words);
+        break;
+      case "B2P77":
+        setWords(b2Words);
+        break;
+      case "C1K44":
+        setWords(c1Words);
+        break;
+      case "C2F11":
+        setWords(c2Words);
+        break;
+      case "EVERYDAY32":
+        setWords(slightlyChallengingWords);
+        break;
+      case "TOEFL54":
+        setWords(toeflWords);
+        break;
+      case "IELTS76":
+        setWords(ieltsWords);
+        break;
+      case "IDIOMS98":
+        setWords(idiomsAndExpressions);
+        break;
+      case "EMOTIONS09":
+        setWords(emotionsAndFeelings);
+        break;
 
-  useEffect(() => {
-    const fetchWords = async () => {
-      // Найти документ пользователя по displayName
-      const usersQuery = query(
-        collection(db, "users"),
-        where("nickName", "==", user?.nickName)
-      );
-      const usersSnapshot = await getDocs(usersQuery);
-      const userDoc = usersSnapshot.docs[0];
-
-      if (!userDoc) return;
-
-      const wordsRef = collection(userDoc.ref, "words");
-      const snapshot = await getDocs(wordsRef);
-      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setWords(data);
-    };
-
-    if (user) {
-      fetchWords();
+      default:
+        break;
     }
-  }, [user]);
+  }, [params]);
 
   useEffect(() => {
     const prepareOptions = async () => {
@@ -98,52 +120,33 @@ const Test = () => {
     setFinished(false);
   };
 
-  const handleGoProfile = () => {
-    navigate("/profile");
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950 mb-20">
-      <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md w-full">
-        {finished ? (
-          <div>
-            <h2 className="text-xl font-semibold mb-4 dark:text-white">
-              Results
-            </h2>
-            <p className="dark:text-white">
-              Corrects: {correctCount}
-            </p>
-            <p className="dark:text-white">
-              Incorects: {incorrectCount}
-            </p>
-            <div className="flex justify-between gap-4 mt-6">
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                onClick={handleRestart}
-              >
-                Again
-              </button>
-              <button
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
-                onClick={handleGoProfile}
-              >
-                Exit
-              </button>
-            </div>
-          </div>
-        ) : (
-          words?.length > 0 &&
-          confusingWords?.length > 0 && (
-            <TestCard
-              wordData={words[selectedWord]}
-              confusingWords={confusingWords}
-              onSelect={handleSelect}
-              selectedAnswer={selectedAnswer}
-              showAnswer={showAnswer}
+    <div className={styles.container}>
+      {category && (
+        <div className={styles.block}>
+          {finished ? (
+            <Results
+              correctCount={correctCount}
+              incorrectCount={incorrectCount}
+              handleRestart={handleRestart}
             />
-          )
-        )}
-      </div>
+          ) : (
+            words?.length > 0 &&
+            confusingWords?.length > 0 && (
+              <TestCard
+                testMethod={testMethod}
+                wordData={words[selectedWord]}
+                confusingWords={confusingWords}
+                onSelect={handleSelect}
+                selectedAnswer={selectedAnswer}
+                showAnswer={showAnswer}
+                length={words.length}
+                selectedWord={selectedWord}
+              />
+            )
+          )}
+        </div>
+      )}
     </div>
   );
 };

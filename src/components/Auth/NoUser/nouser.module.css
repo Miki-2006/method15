@@ -1,0 +1,54 @@
+.container {
+  min-height: 100vh; /* min-h-screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem 2rem; /* py-6 px-8 */
+  max-width: 28rem; /* max-w-md */
+  width: 100%;
+  
+  background-color: #141a29;
+  border: 1px solid #202534;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.icon {
+  font-size: 2.5rem; /* text-4xl */
+  color: #fff;
+  margin-right: 0.5rem;
+}
+
+.textBold {
+  font-weight: 700;
+  font-size: 1.5rem; /* text-2xl */
+  color: #fff;
+}
+
+.loginLink {
+  text-align: center;
+  font-size: 1.5rem; /* text-2xl */
+  color: #fff;
+  text-decoration: none;
+}
+
+.loginLinkDark {
+  color: var(--textGrayDark);
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}

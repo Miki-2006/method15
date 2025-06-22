@@ -1,0 +1,17 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+.check{
+    font-size: 3rem;
+    color: green;
+}
+.loader{
+    width: 3rem;
+    height: 3rem;
+}
