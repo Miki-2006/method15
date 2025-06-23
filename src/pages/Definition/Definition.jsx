@@ -36,7 +36,7 @@ const Definition = () => {
   }, [definition]);
 
   useEffect(() => {
-    const userId = JSON.parse(localStorage.getItem("user")).id;
+    const userId = JSON.parse(localStorage.getItem("user"))?.id;
     const fetchModulesOfUser = async () => {
       if (!userId) {
         navigate("/sign-in");
