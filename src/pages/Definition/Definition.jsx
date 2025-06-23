@@ -36,12 +36,12 @@ const Definition = () => {
   }, [definition]);
 
   useEffect(() => {
-    const userId = JSON.parse(localStorage.getItem("user"))?.id;
     const fetchModulesOfUser = async () => {
-      if (!userId) {
-        navigate("/sign-in");
-        return;
-      }
+      const userId = JSON.parse(localStorage.getItem("user"))?.id;
+      // if (!userId) {
+      //   navigate("/sign-in");
+      //   return;
+      // }
       try {
         const { data: modules } = await supabase
           .from("modules")
