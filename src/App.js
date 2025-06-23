@@ -16,10 +16,8 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main />}>
-        </Route>
-        <Route path="/dictionary" element={<Definition />}>
-        </Route>
+        <Route path="/" element={<Main />}/>
+        <Route path="/dictionary" element={<Definition />}/>
         <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/quizzes/quiz/:id" element={<QuizCard />} />
         <Route path="/quizzes/quiz/:id/test" element={<TestGenerate />} />

@@ -20,7 +20,7 @@
     /* padding: 0rem clamp(1rem, 6vw, 10rem); */
 }
 .card{
-    width: 15rem;
+    width: 16rem;
     height: 40vh;
     background-color: blue;
     border-radius: 15px;
